@@ -2,3 +2,78 @@ Home of the code samples for the Ruby Refactoring Workbook.
 
 To download the code in Zip or Tar format, visit http://github.com/kevinrutherford/rrwb-code/downloads.
 
+= Code smells
+
+== Measureable smells
+   Comments  the code includes text to explain what’s happening
+   Long Method, a method is too long to be manageable
+   Large Module, a class or module is too large to represent a meaningful abstraction
+   Long Parameter List, a method needs too much information in order to get its job done
+   
+== Unnecessary Complexity
+   Dead Code, some code is unused
+   Speculative Generality, code exists “just in case”
+   Greedy Method, a method has more than one responsibility
+   Procedural Code, code proceeds step by step
+   Dynamic Code Creation, class_eval and friends are used to create code at run-time
+   
+== Names
+   Type Embedded in Name, names are coupled to types
+   Uncommunicative Name, a name doesn’t reveal the developer’s intentions
+   Inconsistent Names, domain vocabulary isn’t standardized
+   
+== Duplication
+   Derived Value, a hard-coded value could have been computed instead
+   Repeated Value, a hard-coded value is repeated
+   Duplicated Code, code has been copied
+   Alternative Modules with Different Interfaces, the same problem has been solved more than once
+   
+== Conditional logic
+   Nil Check, nil is used to signal something special
+   Special Case, one scenario is handled differently than the rest
+   Complicated Boolean Expression, the logic is impenetrable
+   Control Coupling, the caller decides which path a method should take
+   Simulated Polymorphism, duck-typing is hand-coded using conditionals
+   
+== Data
+   Open Secret, domain concept’s representation hasn’t been encapsulated, eg String representing phone number
+   Data Class, class has little or no behavior
+   Data Clump, bunch of values travel around together
+   Temporary Field, instance variable has a different lifecycle than its enclosing class
+   
+== Inheritance
+   Implementation Inheritance, subclassing is used purely to reuse code
+   Refused Bequest, a subclass isn’t substitutable for its superclass
+   Inappropriate Intimacy (Subclass Form), a subclass is tangled up in its superclass’s implementation details
+   Lazy Class, a class doesn’t do much
+   
+== Responsibility
+   Feature Envy, an object references another object more often than it references itself
+   Utility Function, a method has no dependency on the state of the instance.
+   Global Variable, a global variable is used
+   Inappropriate Intimacy (General Form), a class depends on implementation details of another class
+   Message Chain, a method digs into the structure of another group of objects, aka train wreck
+   Middle Man, an object merely delegates to another
+   Greedy Module, a class or module has more than one responsibility
+   
+== Accomodating change
+   Divergent Change, module changes too frequently (changing the same module for different reasons)
+   Shotgun Surgery, a simple change causes changes everywhere
+   Parallel Inheritance Hierarchies, changes to one hierarchy must mirror changes to another
+   Combinatorial Explosion, a class hierarchy has too many dimensions
+   
+== Libraries
+   Incomplete Library Module, a library has a vital feature missing
+   Reinvented Wheel, you’ve written code that already exists elsewhere
+   Runaway Dependencies, unexpected dependencies emerge when reuse is attempted
+   
+= Refactorings
+
+== Replace Parameter with Method
+   Don't pre-calcuate method arguments, instead perform calculation in method body
+   
+== Preserve Whole Object
+   Pass in object instead of its attributes
+   
+== Introduce Parameter Object.
+   Group parameters into an object, eg start/end date => date_range
