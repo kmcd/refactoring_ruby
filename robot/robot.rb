@@ -13,4 +13,10 @@ class Robot
     @location.put(@bin)
     @bin = nil
   end
+  
+  def report(out)
+    out.puts
+    out.print "Robot"
+    out.print " location=#{location.name}" if location
+  end
 end

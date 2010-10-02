@@ -9,7 +9,7 @@ describe Robot, 'when new' do
   it 'has no location yet' do
     @robot.location.should be_nil
   end
-
+  
   it 'does not point at a bin yet' do
     @robot.bin.should be_nil
   end

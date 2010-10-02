@@ -1,5 +1,5 @@
 require 'rake/testtask'
-require 'reek/rake_task'
+require 'reek/adapters/rake_task'
 require 'spec/rake/spectask'
 
 desc 'run the ucalc specs'
