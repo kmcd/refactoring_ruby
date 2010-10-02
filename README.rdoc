@@ -3,7 +3,6 @@ Home of the code samples for the Ruby Refactoring Workbook.
 To download the code in Zip or Tar format, visit http://github.com/kevinrutherford/rrwb-code/downloads.
 
 = Code smells
-
 == Measureable smells
    Comments  the code includes text to explain what’s happening
    Long Method, a method is too long to be manageable
@@ -55,6 +54,7 @@ To download the code in Zip or Tar format, visit http://github.com/kevinrutherfo
    Message Chain, a method digs into the structure of another group of objects, aka train wreck
    Middle Man, an object merely delegates to another
    Greedy Module, a class or module has more than one responsibility
+   Shotgun surgery, one change must be made accross many classes
    
 == Accomodating change
    Divergent Change, module changes too frequently (changing the same module for different reasons)
@@ -68,7 +68,6 @@ To download the code in Zip or Tar format, visit http://github.com/kevinrutherfo
    Runaway Dependencies, unexpected dependencies emerge when reuse is attempted
    
 = Refactorings
-
 == Replace Parameter with Method
    Don't pre-calcuate method arguments, instead perform calculation in method body
    
@@ -77,3 +76,11 @@ To download the code in Zip or Tar format, visit http://github.com/kevinrutherfo
    
 == Introduce Parameter Object.
    Group parameters into an object, eg start/end date => date_range
+   
+== Form Template Method
+   You have two methods in subclasses that perform similar steps in the same order, yet the
+   steps are different.
+   
+   Get the steps into methods with the same signature, so that the original methods become
+   the same. Then you can pull them up.
+

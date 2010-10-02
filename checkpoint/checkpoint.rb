@@ -14,7 +14,6 @@ module Checkpoint
   def changes
     var_values.reject { |k,v| k == "@state" || @state[k] == v }
   end
-  
 end
 
 class Object

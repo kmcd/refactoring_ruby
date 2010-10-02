@@ -15,4 +15,10 @@ class Machine
   def put(bin)
     @bin = bin
   end
+  
+  def report(out)
+    out.print "Machine #{name}"
+    out.print " bin=#{bin}" if bin
+    out.puts
+  end
 end

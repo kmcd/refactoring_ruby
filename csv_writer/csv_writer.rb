@@ -1,35 +1,24 @@
 class CsvWriter
-
   def write(lines)
-    lines.each { |line| write_line(line) }
+    lines.map { |line| write_line(line) }.join "\n"
   end
 
-private
+  private
 
   def write_line(fields)
-    if (fields.length == 0)
-      puts
-    else
-      write_field(fields[0])
-      1.upto(fields.length-1) do |i|
-        print ","
-        write_field(fields[i])
-      end
-      puts
-    end
+    lines.map {|field| write_field(field) }.join ","
   end
-
+  
   def write_field(field)
     case field
-      when /,/ then write_quoted(field)
-      when /"/ then write_quoted(field)
-      else print(field)
+      when /,/ : quote_and_escape(field)
+      when /"/ : quote_and_escape(field)
+      else 
+        field
     end
   end
 
-  def write_quoted(field)
-    print "\""
-    print field.gsub(/\"/, "\"\"")
-    print "\""
+  def quote_and_escape(field)
+    "\"#{field.gsub(/\"/, "\"\"")}\""
   end
 end

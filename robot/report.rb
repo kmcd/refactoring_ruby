@@ -1,12 +1,15 @@
 class Report
   def self.report(out, machines, robot)
-    @out, @machines, @robot = out, machines, robot
+    @out, @robot = out, robot
+    
     report_header
-    machine_report
     
     # push down reporting to object style
+    machines.each {|machine| machine.report(@out) }
     robot.report out
     
+    # Feature Envy is better than Shotgun Surgery in this case.
+    # Report is more likely to change than Machine/Robot
     bin_report
   end
   
@@ -14,14 +17,6 @@ class Report
   
   def self.report_header
     @out.puts "FACTORY REPORT"
-  end
-  
-  def self.machine_report
-    @machines.each do |machine|
-      @out.print "Machine #{machine.name}"
-      @out.print " bin=#{machine.bin}" if machine.bin
-      @out.puts
-    end
   end
   
   def self.bin_report
